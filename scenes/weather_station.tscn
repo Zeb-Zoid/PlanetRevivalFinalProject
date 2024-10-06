@@ -1,0 +1,85 @@
+[gd_scene load_steps=8 format=3 uid="uid://dgr5c8i66ey5q"]
+
+[ext_resource type="Script" path="res://scripts/weather_station.gd" id="1_efu5c"]
+[ext_resource type="Texture2D" uid="uid://bqrmoc8bitpxc" path="res://device 1/weather station.png" id="2_36jom"]
+[ext_resource type="Texture2D" uid="uid://drxpt2k8lkm0c" path="res://device glow.png" id="2_ivsqx"]
+[ext_resource type="Texture2D" uid="uid://b5pcchcdv6asc" path="res://device 1/popup 1.png" id="3_uu3bb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qbilf"]
+size = Vector2(100, 104.688)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wu187"]
+size = Vector2(182.5, 147.5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_uokfb"]
+font_size = 25
+
+[node name="WeatherStation1" type="CharacterBody2D" node_paths=PackedStringArray("interactLabel", "popup1", "blueGlow", "backgroundRect")]
+light_mask = 4
+visibility_layer = 4
+position = Vector2(333, 544)
+scale = Vector2(0.8, 0.8)
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_efu5c")
+interactLabel = NodePath("Label")
+popup1 = NodePath("TextureRect")
+blueGlow = NodePath("TextureRect2")
+backgroundRect = NodePath("ColorRect")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.643137)
+offset_left = -312.5
+offset_top = -227.5
+offset_right = 87.5
+offset_bottom = 172.5
+scale = Vector2(0.810687, 0.898732)
+texture = ExtResource("2_ivsqx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-152.5, 76.0938)
+scale = Vector2(0.999999, 0.999999)
+shape = SubResource("RectangleShape2D_qbilf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-152.5, 76.875)
+scale = Vector2(0.152439, 0.161966)
+texture = ExtResource("2_36jom")
+
+[node name="Area2D" type="Area2D" parent="." groups=["device"]]
+position = Vector2(-202.5, 6.25)
+collision_layer = 15
+collision_mask = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["device"]]
+position = Vector2(50, 48.75)
+shape = SubResource("RectangleShape2D_wu187")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -253.75
+offset_top = -68.75
+offset_right = -45.75
+offset_bottom = -33.75
+text = "[E] to collect data"
+label_settings = SubResource("LabelSettings_uokfb")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+offset_left = -2534.0
+offset_top = -1822.0
+offset_right = -2394.0
+offset_bottom = -1700.0
+scale = Vector2(62.625, 32.5701)
+color = Color(0, 0, 0, 0.345098)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+offset_left = -507.5
+offset_top = -281.25
+offset_right = 1164.5
+offset_bottom = 132.75
+scale = Vector2(0.466962, 0.484856)
+texture = ExtResource("3_uu3bb")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

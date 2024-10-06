@@ -1,0 +1,202 @@
+[gd_scene load_steps=16 format=3 uid="uid://ddcseiihrvdfx"]
+
+[ext_resource type="Script" path="res://scripts/main_character.gd" id="1_terr0"]
+[ext_resource type="Texture2D" uid="uid://bqrmoc8bitpxc" path="res://device 1/weather station.png" id="2_mo73i"]
+[ext_resource type="Texture2D" uid="uid://bjtleyxayf2m7" path="res://cross.png" id="3_o61es"]
+[ext_resource type="Texture2D" uid="uid://br3w112emea7s" path="res://heart.png" id="4_apb5e"]
+[ext_resource type="Texture2D" uid="uid://cjieyhyudbkga" path="res://device 2/phmeter.png" id="4_iacqx"]
+[ext_resource type="Texture2D" uid="uid://cr5bhaph2dpwh" path="res://device 3/ozone meter.png" id="5_rienv"]
+[ext_resource type="Texture2D" uid="uid://chao85elotv38" path="res://player/pixil-frame-0 (2).png" id="6_iokjt"]
+
+[sub_resource type="SystemFont" id="SystemFont_5s6mo"]
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_eln8v"]
+font = SubResource("SystemFont_5s6mo")
+font_size = 20
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_72wr7"]
+atlas = ExtResource("6_iokjt")
+region = Rect2(0, 0, 14, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ddq0w"]
+atlas = ExtResource("6_iokjt")
+region = Rect2(16, 0, 14, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_buqrj"]
+atlas = ExtResource("6_iokjt")
+region = Rect2(32, 0, 14, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_per0n"]
+atlas = ExtResource("6_iokjt")
+region = Rect2(48, 0, 14, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i57i2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_72wr7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ddq0w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_buqrj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_per0n")
+}],
+"loop": true,
+"name": &"new_animation_1",
+"speed": 7.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aqw1o"]
+size = Vector2(69, 103.753)
+
+[node name="player" type="CharacterBody2D" node_paths=PackedStringArray("device1", "device2", "device3")]
+position = Vector2(255, 498)
+collision_layer = 15
+collision_mask = 15
+script = ExtResource("1_terr0")
+device1 = NodePath("CanvasLayer/cross")
+device2 = NodePath("CanvasLayer/cross2")
+device3 = NodePath("CanvasLayer/cross3")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 29.0
+offset_top = 102.0
+offset_right = 308.0
+offset_bottom = 157.0
+text = "Devices Found"
+label_settings = SubResource("LabelSettings_eln8v")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_left = 30.0
+offset_top = 139.0
+offset_right = 116.0
+offset_bottom = 208.0
+scale = Vector2(0.748475, 0.872753)
+color = Color(0, 0, 0, 0.564706)
+
+[node name="imageitself" type="TextureRect" parent="CanvasLayer"]
+offset_left = 37.0
+offset_top = 144.0
+offset_right = 92.0
+offset_bottom = 199.0
+scale = Vector2(0.914006, 0.914006)
+texture = ExtResource("2_mo73i")
+expand_mode = 3
+
+[node name="cross" type="TextureRect" parent="CanvasLayer"]
+visible = false
+offset_left = 38.0
+offset_top = 145.0
+offset_right = 1364.0
+offset_bottom = 695.0
+scale = Vector2(0.0380092, 0.0862054)
+texture = ExtResource("3_o61es")
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer"]
+offset_left = 105.0
+offset_top = 138.0
+offset_right = 191.0
+offset_bottom = 207.0
+scale = Vector2(0.748475, 0.872753)
+color = Color(0, 0, 0, 0.564706)
+
+[node name="imageitself2" type="TextureRect" parent="CanvasLayer"]
+offset_left = 112.0
+offset_top = 144.0
+offset_right = 167.0
+offset_bottom = 199.0
+scale = Vector2(0.914006, 0.914006)
+texture = ExtResource("4_iacqx")
+expand_mode = 3
+
+[node name="cross2" type="TextureRect" parent="CanvasLayer"]
+visible = false
+offset_left = 113.0
+offset_top = 144.0
+offset_right = 1439.0
+offset_bottom = 694.0
+scale = Vector2(0.0380092, 0.0862054)
+texture = ExtResource("3_o61es")
+
+[node name="ColorRect3" type="ColorRect" parent="CanvasLayer"]
+offset_left = 179.0
+offset_top = 138.0
+offset_right = 265.0
+offset_bottom = 207.0
+scale = Vector2(0.748475, 0.872753)
+color = Color(0, 0, 0, 0.564706)
+
+[node name="imageitself3" type="TextureRect" parent="CanvasLayer"]
+offset_left = 187.0
+offset_top = 143.0
+offset_right = 242.0
+offset_bottom = 198.0
+scale = Vector2(0.914006, 0.914006)
+texture = ExtResource("5_rienv")
+expand_mode = 3
+
+[node name="cross3" type="TextureRect" parent="CanvasLayer"]
+visible = false
+offset_left = 187.0
+offset_top = 144.0
+offset_right = 1513.0
+offset_bottom = 694.0
+scale = Vector2(0.0380092, 0.0862054)
+texture = ExtResource("3_o61es")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+offset_left = 26.0
+offset_top = 11.0
+offset_right = 426.0
+offset_bottom = 411.0
+scale = Vector2(0.221892, 0.220872)
+texture = ExtResource("4_apb5e")
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer"]
+offset_left = 121.0
+offset_top = 11.0
+offset_right = 521.0
+offset_bottom = 411.0
+scale = Vector2(0.221892, 0.220872)
+texture = ExtResource("4_apb5e")
+
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer"]
+offset_left = 216.0
+offset_top = 11.0
+offset_right = 616.0
+offset_bottom = 411.0
+scale = Vector2(0.221892, 0.220872)
+texture = ExtResource("4_apb5e")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(165, 33)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_i57i2")
+animation = &"new_animation_1"
+autoplay = "new_animation_1"
+frame = 2
+frame_progress = 0.598467
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(167, 28)
+shape = SubResource("RectangleShape2D_aqw1o")
+
+[node name="Area2D" type="Area2D" parent="." groups=["player"]]
+position = Vector2(-122, 0)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" groups=["player"]]
+position = Vector2(289.917, 26.4939)
+rotation = 3.13435
+shape = SubResource("RectangleShape2D_aqw1o")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

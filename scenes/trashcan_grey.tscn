@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0vhx1lmt6f2g"]
+
+[ext_resource type="Texture2D" uid="uid://dp11q2hfaw536" path="res://grey_can.png" id="1_t8sf6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_be2y1"]
+size = Vector2(66, 96)
+
+[node name="trashcan1" type="CharacterBody2D"]
+position = Vector2(-1, -2)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(3, -50)
+scale = Vector2(0.245, 0.245)
+texture = ExtResource("1_t8sf6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, -50)
+shape = SubResource("RectangleShape2D_be2y1")
